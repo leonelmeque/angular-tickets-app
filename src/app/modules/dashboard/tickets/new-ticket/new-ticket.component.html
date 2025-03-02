@@ -1,0 +1,27 @@
+<form (ngSubmit)="onSubmit()" #form>
+  <p>
+    <app-control label="Title">
+      <input name="title" id="title" [(ngModel)]="titleValue" #input />
+    </app-control>
+  </p>
+  <p>
+    <app-control label="Request">
+      <textarea
+        name="request"
+        id="request"
+        rows="3"
+        [(ngModel)]="requestValue"
+        #input
+      ></textarea>
+    </app-control>
+  </p>
+  <div>
+    <button
+      appButton
+      [label]="'New ticket'"
+      [icon]="'→'"
+      class="submit-button"
+      [withTrackEvent]="newTicketEvent"
+    ></button>
+  </div>
+</form>

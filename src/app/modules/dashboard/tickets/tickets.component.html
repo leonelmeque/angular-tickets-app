@@ -1,0 +1,22 @@
+<ul>
+  <li class="count">
+    Total num of tickets: {{ totalTickets() }}
+    {{ totalTickets() === 1 ? "Ticket" : "Tickets" }}
+  </li>
+
+  @if(isLoadingTickets()){
+  <p>Loading Tickets</p>
+  } @else { @for(ticket of tickets(); track ticket.id ){
+  <li>
+    <app-ticket
+      [data]="ticket"
+      (closeTicket)="onCloseTicket($event)"
+      (deleteTicket)="onDeleteTicket($event)"
+    />
+  </li>
+  } @empty {
+  <p>No tickets available</p>
+  } }
+</ul>
+
+<app-new-ticket (add)="onAdd($event)"></app-new-ticket>
